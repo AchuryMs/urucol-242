@@ -1,3 +1,134 @@
+:root{
+    --primary: #008cff;
+    --secondary: #8a8a8a;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container for both sidebar and content */
+.container {
+    display: flex;
+    background-color: #000;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #ddd;
+    width: 15%;
+    padding-top: 20px;
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra los elementos dentro del sidebar */
+}
+
+/* Estilo para el título del contador de empleados */
+.sidebar h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Contenedor del contador de empleados */
+.employee-count {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    background-color: #008cff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* Espacio entre el contador y el menú */
+    position: relative;
+}
+
+/* Estilo del texto dentro del círculo */
+.employee-count span {
+    font-size: 20px;
+}
+
+/* Menú */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    color: #030a9680;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.5s ease;
+    box-shadow: transparent;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+    color: #ffffff;
+    background: #008cff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff, 0 0 100px #008cff;
+}
+
+/* Content Styling */
+.content {
+    margin-left: 15%;
+    /* Space for the sidebar */
+    padding: 20px;
+    width: 100%;
+    background-color: #333;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar ul li {
+        margin: 10px 0;
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -9,26 +140,104 @@ h2 {
     color: #333;
 }
 
-table {
+/* Estilo para la tabla */
+.employee-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
+.employee-table th,
+.employee-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
-th {
+.employee-table th {
+    background-color: #fcfcfc;
+    color: rgb(136, 120, 120);
+}
+
+.employee-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-a {
-    text-decoration: none;
-    color: #337ab7;
+.employee-table tr:hover {
+    background-color: #e0e0e0;
 }
 
-a:hover {
-    color: #23527c;
+.employee-table a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.employee-table a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo similar al del botón, pero aplicado a h1 */
+.main-title {
+    font-size: 50px;
+    color: #222;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 500ms;
+    transition-property: color;
+}
+
+.main-title:focus,
+.main-title:hover {
+    transition-duration: 500ms;
+    color: #222222aa;
+    background: linear-gradient(0, var(--primary), #000 70%, #000 99%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.main-title:focus:after,
+.main-title:hover:after {
+    width: 100%;
+    left: 0px;
+}
+
+.main-title:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 0px;
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    background-color: #e5e5e5;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 500ms;
+    transition-property: width, left;
+}
+
+.main-title:focus:before,
+.main-title:hover:before {
+    width: 100%;
+    left: 0px;
+}
+
+.main-title:before {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 0px;
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    background-color: var(--primary);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 500ms;
+    transition-property: width, left;
+    filter: blur(5px);
 }
